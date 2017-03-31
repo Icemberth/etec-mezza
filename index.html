@@ -85,11 +85,17 @@
     </div>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/page.js"></script>
+    <!--<script src="http://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>-->
     <script src="js/materialize.min.js"></script>
     <script src="js/mezza.js"></script>
     <script>
         $(function(){
+            mezza.init();
             $(".button-collapse").sideNav();
+
+            $(".redirect").on("click",function(){
+                //mezza.redirect($(this).attr("redirect"));
+            });
         });
     </script>
 </body>

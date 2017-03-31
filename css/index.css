@@ -5,15 +5,20 @@ nav{
     background-color: #02306f;
 }
 footer{
-    min-height: 64px;
     background-color: rgb(0, 186, 109);
     color: white;
     position: absolute;
     bottom: 0;
     width: 100%;
+    max-height: 56px;
+    overflow: auto;
 }
 aside  div  div  div{
     padding: 5px;
+}
+body > div.row{
+    height: 100%;
+    overflow: auto;
 }
 .brand-logo > img{
     width: 100px;
