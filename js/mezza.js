@@ -16,9 +16,12 @@ mezza = {
     },
     getIndex : function(ctx, next){
         console.log("Hola");
-        $.getJSON('js/index.json', function(user){
-            console.log("netro");
-            console.log(user);
+        $.getJSON('js/index.json', function(index){
+            //console.log("netro");
+            console.log(index);
+            $(".change-resource-name").text(index[0].name);
+            $(".change-resource-img").attr("src",index[0].icon);
+            $(".change-resource-url").attr("newResource",index[0].action);
         })
     }
 }

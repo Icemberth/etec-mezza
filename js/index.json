@@ -1,28 +1,28 @@
 {
     "0" : {
         "name":  "Vida",
-        "icon" : "vida.png",
+        "icon" : "img/vida.png",
         "action" : "/vida/"
     },
     "1" : {
         "name":  "Salud",
-        "icon" : "salud.png",
+        "icon" : "img/salud.png",
         "action" : "/salud/"
     },
     "2" : {
         "name":  "Ahorro",
-        "icon" : "ahorro.png",
+        "icon" : "img/ahorro.png",
         "action" : "/ahorro/"
     },
     "3" : {
         "name":  "Protección Patrimonial",
-        "icon" : "patrimonial.png",
+        "icon" : "img/patrimonial.png",
         "action" : "/patrimomio/"
     }
     ,
     "4" : {
         "name":  "ARL",
-        "icon" : "arl.png",
+        "icon" : "img/arl.png",
         "action" : "/arl/"
     }
 }
