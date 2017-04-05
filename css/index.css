@@ -13,6 +13,9 @@ footer{
     max-height: 56px;
     overflow: auto;
 }
+figure{
+    margin: 0 !important;
+}
 aside  div  div  div{
     padding: 5px;
 }
@@ -47,4 +50,40 @@ body > div.row{
 }
 .change-resource-img{
   width: 120px;
+}
+.change-resource-url{
+    background-color: #02306f;
+    color: white;
+}
+.service{
+    cursor: pointer;
+}
+.service p {
+    color : #02306f;
+}
+.btn-flat:focus, .btn-flat.__ghostlab-focus__, .btn-flat:hover, .btn-flat.__ghostlab-hover__{
+    background-color: rgba(2, 48, 111, 0.67);
+}
+.mezza-color{
+    color:  #02306f;
+}
+.header-vida{
+    padding-top: 10px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border: solid 1px #02306f;
+    border-width: 1px 1px 0px 1px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+.title-service{
+    /*padding-top: 5px !important;*/
+    color: #02306f;
+    font-weight: bold;
+}
+.delimiter{
+    border-bottom: solid 1px #02306f
+}
+.bg-light{
+    background-color: solid 1px rgba(2, 48, 111, 0.47) !important;
 }

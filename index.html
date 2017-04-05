@@ -13,7 +13,7 @@
     <div class="row">
         <nav>
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo"><img src="img/logo-white.png" alt=""></a>
+                <a href="/index" class="brand-logo"><img src="img/logo-white.png" alt=""></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a class="redirect" redirect="PRODUCTOS">PRODUCTOS</a></li>
@@ -40,13 +40,43 @@
         <div class="col s12 m9 l9 center-align">
             <h5 class="mezza-background">Soluciones Integrales en Seguros para el Área de Recursos Humanos</h5>
             <figure>
-              <img resource="" class="change-resource-img" src="" alt="">
+              <img resource="" class="change-resource-img" src="img/vida.png" alt="">
             </figure>
-            <h5 class="change-resource-name mezza-background"></h5>
+            <h5 class="change-resource-name mezza-background">Vida</h5>
             <!--<button class="" >COTIZAR</button>-->
             <a class="waves-effect waves-teal btn-flat change-resource-url" newResource="">COTIZAR</a>
+            <br><br>
             <h5 class="mezza-background-two">Selecciona un producto de seguros diferente</h5>
-
+            <br>
+            <div class="col s12 m12 l12 load-">
+                <div class="col l1 hide-on-small-only hide-on-med-only">&nbsp;</div>
+                <div class="col s6 m4 l2 service" icon="img/vida.png" name="Vida" action="vida.html" typeof="vida">
+                   <figure><img src="img/vida.png" width="80px" alt=""></figure>
+                    <p class="center-align">Vida</p>
+                </div>
+                <div class="col s6 m4 l2 service" icon="img/salud.png" name="Salud" action="salud.html" typeof="salud">
+                    <figure><img src="img/salud.png" width="80px" alt=""></figure>
+                    <p class="center-align">Salud</p>
+                </div>
+                <div class="col s6 m4 l2 service" icon="img/ahorro.png" name="Ahorro" action="ahorro.html" typeof="ahorro">
+                    <figure><img src="img/ahorro.png" width="80px" alt=""></figure>
+                    <p class="center-align">Ahorro</p>
+                </div>
+                <div class="col s6 m4 l2 service" icon="img/patrimonial.png" name="Protección Patrimonial" action="patrimomio.html" typeof="proteccion">
+                    <figure><img src="img/patrimonial.png" width="80px" alt=""></figure>
+                    <p class="center-align">Protección Patrimonial</p>
+                </div>
+                <div class="col s6 m4 l2 service" icon="img/arl.png" name="ARL" action="arl.html" typeof="arl">
+                    <figure><img src="img/arl.png" width="80px" alt=""></figure>
+                    <p class="center-align">ARL</p>
+                </div>
+                <div class="col l1 hide-on-small-only hide-on-med-only">&nbsp;</div>
+            </div>
+            <div class="col s12 m12 l12">
+                <figure>
+                    <img src="img/logo-blue.png" width="200px" alt="">
+                </figure>
+            </div>
         </div>
         <aside class="col s12 m3 l3 center-align grey lighten-3">
             <div class="col s12 m12 l12 aside-pannel">
@@ -59,6 +89,7 @@
                     <div class="col s12 m12 l12"></div>
                 </div>
             </div>
+            <br>
             <div class="col s12 m12 l12 aside-pannel">
                 <h5>Publicaciones</h5>
                 <div class="col s12 m12 l12">
@@ -74,7 +105,9 @@
                 <a href="">Funcionarios</a>
             </div>
             <div class="col s12 m12 l12 aside-pannel">
-                SIZZO
+                <figure style="margin-top : 5px !important;">
+                    <img src="img/logo-sizzo.png" width="120px" alt="">
+                </figure>
             </div>
         </aside>
         <footer class="">
@@ -104,6 +137,12 @@
             $(".redirect").on("click",function(){
                 //mezza.redirect($(this).attr("redirect"));
             });
+            $(".service").on("click",function(){
+                 mezza.switchService($(this));
+            });
+           /* page('/salud/',function(){
+                console.log("asdasd");
+            });*/
         });
     </script>
 </body>
