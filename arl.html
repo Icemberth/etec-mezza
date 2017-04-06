@@ -43,23 +43,23 @@
             <div class="col s12 l9 m9 header-service">
                 <div class="col s6 m2 l2"><figure><img src="img/vida.png" width="50px;" alt=""></figure></div>
                 <div class="col s6 m6 l6 left-align title-service">
-                    <h5>Seguros de Vida</h5>
+                    <h5>Seguros de Ahorro</h5>
                 </div>
                 <div class="col s6 m4 l4 hide-on-small-only"><figure><img src="img/logo-blue.png" width="100px;" alt=""></figure></div>
                 <!-- BODY -->
                 <div class="cols12 m12 l12 delimiter">
                     &nbsp;
                 </div>
-                <div class="col s6 m6 l6 select-people bg-light">
-                    <figure><img src="img/vida.png" width="50px;" alt=""></figure>
-                    Personas
+                <div class="col s6 m6 l6 select-people ">
+                    <!--<figure><img src="img/vida.png" width="50px;" alt=""></figure>
+                    Personas-->
                 </div>
-                <div class="col s6 m6 l6 select-enterprise ">
+                <div class="col s6 m6 l6 select-enterprise bg-light">
                     <figure><img src="img/logo-blue.png" width="100px;" alt=""></figure>
                     Empresas
                 </div>
                 <div class="col s12 m12 l12 container-forms">
-                    <div class="col s12 m6 l6 form-people">
+                    <div class="col s12 m6 l6 form-people hide">
                         <select class="browser-default" name="producto" id="1">
                             <option value="1">producto</option>
                             <option value="2">productos</option>
@@ -70,7 +70,7 @@
                         <input type="text" placeholder="Teléfono">
                         <input type="text" placeholder="Correo Electrónico">
                     </div>
-                    <div class="col s12 m6 l6 form-enterprise hide">
+                    <div class="col s12 m6 l6 form-enterprise ">
                         <select class="browser-default" name="producto" id="1">
                             <option value="1">producto</option>
                             <option value="2">productos</option>
@@ -124,7 +124,7 @@
     <script>
         $(function(){
             mezza.init();
-            $(".select-people").on("click",function(){
+           /* $(".select-people").on("click",function(){
                 $(this).addClass("bg-light");
                 $(".select-enterprise").removeClass("bg-light");
 
@@ -137,7 +137,7 @@
 
                 $(".form-people").addClass("hide");
                 $(".form-enterprise").removeClass("hide");
-            });
+            });*/
         });
     </script>
 </body>

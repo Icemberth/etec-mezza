@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mezza</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/index" class="brand-logo"><img src="img/logo-white.png" alt=""></a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="redirect" redirect="PRODUCTOS">PRODUCTOS</a></li>
+                    <li><a class="redirect" redirect="INFORMACION">INFORMACION</a></li>
+                    <li><a class="redirect" redirect="TRABAJE">TRABAJE CON NOSOTROS</a></li>
+                    <li><a class="redirect" redirect="CAMPAÑAS">CAMPAÑAS DE SEGUROS</a></li>
+                    <li><a class="redirect" redirect="BLOGS">BLOGS</a></li>
+                    <li><a class="redirect" redirect="CONTÁCTENOS">CONTÁCTENOS</a></li>
+                    <li><a class="redirect" redirect="LOGIN">LOGIN</a></li>
+                    <li><a class="redirect" redirect="BUSCAR">BUSCAR</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a class="redirect" redirect="BUSCAR">BUSCAR</a></li>
+                    <li><a class="redirect" redirect="LOGIN">LOGIN</a></li>
+                    <li><a class="redirect" redirect="PRODUCTOS">PRODUCTOS</a></li>
+                    <li><a class="redirect" redirect="INFORMACION">INFORMACION</a></li>
+                    <li><a class="redirect" redirect="TRABAJE">TRABAJE CON NOSOTROS</a></li>
+                    <li><a class="redirect" redirect="CAMPAÑAS">CAMPAÑAS DE SEGUROS</a></li>
+                    <li><a class="redirect" redirect="BLOGS">BLOGS</a></li>
+                    <li><a class="redirect" redirect="CONTÁCTENOS">CONTÁCTENOS</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class=" col s12 m6 l6 center-align">
+            <h5>&nbsp;</h5>
+            <div class="col s12 m12 l12  mezza-color">
+                <figure>
+                    <img src="img/vida.png" width="150px;" alt="">
+                </figure>
+                <div class="col s12 m12 l12 left-align">
+                    <h5>CONTÁCTENOS</h5>
+                    <p>Teléfono: 7562002</p>
+                    <p>Celular: 321 327 6419</p>
+                    <p>Dirección: Calle 127 # 46 - 25</p>
+                    <p>E-mail: servicioalcliente@mezza.com.co</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6 l6 center-align">
+            <h5 class="gray-mezza">CONTACTAR</h5>
+            <p>Todos los campos son requeridos</p>
+            <input placeholder="Nombres" style="width:50%" type="text">
+            <input placeholder="Apellidos" style="width:50%" type="text">
+            <input placeholder="Empresa" style="width:50%" type="text">
+            <input placeholder="Ciudad" style="width:50%" type="text">
+            <input placeholder="E-Mail" style="width:50%" type="email">
+            <input placeholder="Teléfono" style="width:50%" type="tel">
+            <textarea style="width: 50%" name="" id="" cols="30" rows="10"></textarea>
+        </div>
+        <footer class="">
+            <div class="col s12 m6 l3 center-align" style="padding: 15px;">
+                POLÍTICA DE MANEJO DE DATOS
+            </div>
+            <div class="col s12 m6 l6 center-align" style="padding: 15px;">
+                Cpyright 2017 All rights reserved
+            </div>
+            <div class="col s12 m12 l3 center-align" style="padding: 15px;">
+                <div class="col s4 m4 l4"><img src="img/facebook-flat.png" alt="" style="width:30px;"></div>
+                <div class="col s4 m4 l4"><img src="img/google-plus-flat.png" alt="" style="width:30px;"></div>
+                <div class="col s4 m4 l4"><img src="img/twitter-flat.png" alt="" style="width:30px;"></div>
+            </div>
+        </footer>
+    </div>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/page.js"></script>
+    <!--<script src="http://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>-->
+    <script src="js/materialize.min.js"></script>
+    <script src="js/mezza.js"></script>
+    <script>
+        $(function(){
+            mezza.init();
+        });
+    </script>
+</body>
+</html>
