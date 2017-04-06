@@ -113,3 +113,9 @@ body > div.row{
 .select-people, .select-enterprise{
     cursor: pointer;
 }
+.text-polity{
+    margin-top: 10px !important;
+    padding-left: 20% !important;
+    text-align: justify;
+    padding-right: 20% !important;
+}
