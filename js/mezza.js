@@ -6,6 +6,10 @@ var mezza = {};
 
 mezza = {
     init : function(){
+      $(".redirect").on("click",function(){
+        console.log($(this).attr("redirect"));
+        document.location = $(this).attr("redirect") + ".html";
+      });
        // page();
        // console.log("algo");
        // page.redirect("/index");
