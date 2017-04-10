@@ -1,49 +1,19 @@
 var mezza = {};
-
-/*mezza.redirect = {
-    redire
-}*/
-
 mezza = {
-    init : function(){
-      $(".redirect").on("click",function(){
+    jsonCapture  : {},
+    init : function () {
+        $.fn.extend({
+            animateCss: function (animationName) {
+                var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                this.addClass('animated ' + animationName).one(animationEnd, function() {
+                    $(this).removeClass('animated ' + animationName);
+                });
+            }
+        });
+      $(".redirect").on("click", function(){
         console.log($(this).attr("redirect"));
         document.location = $(this).attr("redirect") + ".html";
       });
-       // page();
-       // console.log("algo");
-       // page.redirect("/index");
-        //page('', mezza.getIndex);
-        //page('/', mezza.getIndex);
-        //page('/index', mezza.getIndex);
-       // page('/arl', mezza.getArl);
-    },
-    redirect : function($URL){
-        page.redirect($URL);
-    },
-    getIndex : function(ctx, next){
-        console.log("Hola");
-        /*$.getJSON('../js/index.json', function(index){
-            //console.log("netro");
-            console.log(index);
-            $(".change-resource-name").text(index[0].name);
-            $(".change-resource-img").attr("src",index[0].icon);
-            $(".change-resource-url").attr("newResource",index[0].action);
-            mezza.setMenu(index);
-        });  */
-    },
-    setMenu : function(menu){
-        /*var totalServices = $(".service").length;
-        var i = 0;
-        for(i = 0; i < totalServices; ++i){
-            var service = menu[i].action;
-            service = service.replace(/\\/g, '');
-            //$(".service[typeof='"+service+"']").find("img").attr("src",menu[])
-            $($(".service")[i]).find("img").attr("src",menu[i].icon);
-            $($(".service")[i]).attr("icon",menu[i].icon);
-            $($(".service")[i]).attr("name",menu[i].name);
-            $($(".service")[i]).attr("action",menu[i].action);
-        }*/
     },
     switchService : function(service){
         console.log(service);
@@ -51,7 +21,55 @@ mezza = {
         $(".change-resource-name").text($(service).attr("name"));
         $(".change-resource-url").attr("href",$(service).attr("action"));
     },
-    getArl : function(){
+    send : function(){
+        console.log("entro");
+        $.ajax({
+            url: "mezza.php",
+            method: "post",
+            data: mezza.jsonCapture,
+            beforeSend: function() {
+                console.log("antes de enviar...");
+                $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $(".shadow-of-request").addClass("show");
+                });
+                $(".container-of-request").animateCss("bounceIn");
+            },
+            success: function(data) {
+                //cotizacion-enviada.png
+                console.log("recibido", data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
 
+            }
+        });
+    },
+    getDataFromForm : function($form){
+        var x = 0;
+        var totalData = $($form).children().length;
+        mezza.jsonCapture = {};//seteo el Json siempre uqe se haga una petición
+        for(x = 0; x < totalData; ++x){
+            //$($form).children()[x].value;
+            //$($form).children()[x].attributes.name.value
+            mezza.jsonCapture[$($form).children()[x].attributes.name.value] = $($form).children()[x].value;
+        }
+        console.log(mezza.jsonCapture);
+        //$(".form-people").children()[0].value
+    },
+    sendService : function($formPeople, $formEnterprise){
+       /* $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $(".shadow-of-request").addClass("show");
+        });
+        $(".container-of-request").animateCss("bounceIn");*/
+        if(!$($formPeople).hasClass("hide")){//Si no tiene la clase hide, envío este form con sus datos.
+           mezza.getDataFromForm($formPeople);
+        }else{//envío el form de Empresa
+           mezza.getDataFromForm($formEnterprise);
+        }
+        //console.log("asdasd");
+        mezza.send();
+        /*$(".shadow-of-request").addClass("show");
+        $(".container-of-request").animateCss("bounceIn"); */
+
+        //mezza.request();
     }
 }

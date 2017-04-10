@@ -7,6 +7,7 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -60,30 +61,26 @@
                 </div>
                 <div class="col s12 m12 l12 container-forms">
                     <div class="col s12 m6 l6 form-people">
-                        <select class="browser-default" name="producto" id="1">
-                            <option value="1">producto</option>
-                            <option value="2">productos</option>
-                        </select>
-                        <input type="text" placeholder="Nombre">
-                        <input type="text" placeholder="Apellidos">
-                        <input type="text" placeholder="Identificación">
-                        <input type="text" placeholder="Teléfono">
-                        <input type="text" placeholder="Correo Electrónico">
+                        <input type="text" name="nombre" placeholder="Nombre">
+                        <input type="text" name="apellidos" placeholder="Apellidos">
+                        <input type="text" name="identificacion" placeholder="Identificación">
+                        <input type="text" name="telefono" placeholder="Teléfono">
+                        <input type="text" name="correo" placeholder="Correo Electrónico">
+                        <input type="hidden" name="servicio" value="Seguro de Vida">
+                        <input type="hidden" name="adquirido" value="servicePeople">
                     </div>
                     <div class="col s12 m6 l6 form-enterprise hide">
-                        <select class="browser-default" name="producto" id="1">
-                            <option value="1">producto</option>
-                            <option value="2">productos</option>
-                        </select>
-                        <input type="text" placeholder="Nombre">
-                        <input type="text" placeholder="Ojbeto Social">
-                        <input type="text" placeholder="NIT">
-                        <input type="text" placeholder="Teléfono">
-                        <input type="text" placeholder="Correo Electrónico">
-                        <input type="text" placeholder="Número de empleados">
+                        <input type="text" name="nombre" placeholder="Nombre">
+                        <input type="text" name="social" placeholder="Ojbeto Social">
+                        <input type="text" name="nit" placeholder="NIT">
+                        <input type="text" name="telefono" placeholder="Teléfono">
+                        <input type="text" name="correo" placeholder="Correo Electrónico">
+                        <input type="text" name="empleados" placeholder="Número de empleados">
+                        <input type="hidden" name="servicio" value="Seguro de Vida">
+                        <input type="hidden" name="adquirido" value="serviceEnterprise">
                     </div>
                     <div style="margin-bottom: 5px;" class="col s12 m12 l12 right-align finally-form">
-                        <a class="waves-effect waves-teal btn-flat change-resource-url" >COTIZAR</a>
+                        <a class="waves-effect waves-teal btn-flat change-resource-url cotizar" >COTIZAR</a>
                     </div>
                 </div>
             </div>
@@ -116,6 +113,14 @@
             </div>
         </footer>
     </div>
+    <div class="shadow-of-request">
+        <div class="container-of-request">
+            <figure>
+                <img src="img/loader.gif" alt="">
+            </figure>
+            <h5 class="mezza-color-aux">Procesando su cotización</h5>
+        </div>
+    </div>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/page.js"></script>
     <!--<script src="http://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>-->
@@ -137,6 +142,9 @@
 
                 $(".form-people").addClass("hide");
                 $(".form-enterprise").removeClass("hide");
+            });
+            $(".cotizar").on("click", function(){
+                mezza.sendService($(".form-people"), $(".form-enterprise"));
             });
         });
     </script>

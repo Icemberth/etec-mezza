@@ -31,6 +31,13 @@ select.browser-default{
     border-radius: 5px;
     color: #02306f;
 }
+aside{
+    padding: 0px !important;
+    margin-left: -5px !important;
+}
+aside img{
+    cursor: pointer;
+}
 aside  div  div  div{
     padding: 5px;
 }
@@ -119,4 +126,27 @@ body > div.row{
     text-align: justify;
     padding-right: 20% !important;
 }
-
+.shadow-of-request{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.68);
+    z-index: 10;
+    top: 0;
+}
+.shadow-of-request.show{
+    display: block;
+}
+.container-of-request{
+    position: absolute;
+    top: 20%;
+    color: black;
+    text-align: center;
+    background-color: white;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    /*margin-top: -85px;*/
+    margin-top:  calc(50% - 107px);
+}
