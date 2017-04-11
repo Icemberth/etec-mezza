@@ -148,5 +148,5 @@ body > div.row{
     left: 50%;
     margin-left: -150px;
     /*margin-top: -85px;*/
-    margin-top:  calc(50% - 107px);
+   /* margin-top:  calc(50% - 107px);*/
 }

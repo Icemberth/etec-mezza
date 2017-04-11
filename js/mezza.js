@@ -14,6 +14,9 @@ mezza = {
         console.log($(this).attr("redirect"));
         document.location = $(this).attr("redirect") + ".html";
       });
+      $(".politica").on("click",function(){
+         document.location = "politica.html";
+      });
     },
     switchService : function(service){
         console.log(service);
@@ -29,17 +32,62 @@ mezza = {
             data: mezza.jsonCapture,
             beforeSend: function() {
                 console.log("antes de enviar...");
-                $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                /*$('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                     $(".shadow-of-request").addClass("show");
                 });
+                $(".container-of-request").animateCss("bounceIn");*/
+                $(".container-of-request").html("");
+                $(".container-of-request").append('\
+                    <figure>\
+                        <img src="img/loader.gif" alt="">\
+                    </figure>\
+                    <h5 class="mezza-color-aux">Procesando su cotización</h5>\
+                ');
+                $(".shadow-of-request").addClass("show");
                 $(".container-of-request").animateCss("bounceIn");
             },
             success: function(data) {
                 //cotizacion-enviada.png
                 console.log("recibido", data);
+                if(data.status == "true"){//todo salió bien
+                    $(".container-of-request").html("");
+                    $(".container-of-request").append('\
+                        <figure><img src="img/cotizacion-enviada.png" style="width: 100px;margin-top: 10px;"/></figure>\
+                        <p style="padding: 5px;">Se ha procesado tu cotización correctamente!</p>\
+                        <a class="waves-effect waves-teal btn-flat change-resource-url close-cotizar" style="margin-bottom: 10px;" >CERRAR</a>\
+                    ');
+                    $(".close-cotizar").on("click",function(){
+                        $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                            $(".shadow-of-request").removeClass("show");
+                        });
+                        $(".container-of-request").animateCss("bounceOut");
+                    });
+                }else{//algo salió mal
+                    $(".container-of-request").html("");
+                    $(".container-of-request").append('\
+                        <p style="padding: 5px;">Ocurrió un Error al procesar tu cotización por favor intenta de nuevo en unos momentos</p>\
+                        <a class="waves-effect waves-teal btn-flat change-resource-url close-cotizar" style="margin-bottom: 10px;" >CERRAR</a>\
+                    ');
+                    $(".close-cotizar").on("click",function(){
+                        $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                            $(".shadow-of-request").removeClass("show");
+                        });
+                        $(".container-of-request").animateCss("bounceOut");
+                    });
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
-
+                $(".container-of-request").html("");
+                $(".container-of-request").append('\
+                    <p style="padding: 5px;">Ocurrió un Error al procesar tu cotización por favor intenta de nuevo en unos momentos</p>\
+                    <a class="waves-effect waves-teal btn-flat change-resource-url close-cotizar" style="margin-bottom: 10px;" >CERRAR</a>\
+                ');
+                $(".close-cotizar").on("click",function(){
+                    $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                        $(".shadow-of-request").removeClass("show");
+                    });
+                    $(".container-of-request").animateCss("bounceOut");
+                });
             }
         });
     },

@@ -21,7 +21,27 @@ class mezza {
     }
 
     public function enviarCotizacionNormal($data){
-        var_dump($data);
+        $mail = "Información : /r";
+        $mail .= "Nombre : ".$data["nombre"]." ".$data["apellidos"];
+        $mail .= "Identificación : ".$data["identificacion"];
+        $mail .= "Teléfono : ".$data["telefono"];
+        $mail .= "Correo : ".$data["correo"];
+        //Titulo
+        $titulo = "Cotización ".$data["servicio"];
+        //cabecera
+        $headers = "MIME-Version: 1.0\r\n";
+        $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+        //dirección del remitente
+        $headers .= "From: Mezza web page\r\n";
+        //Enviamos el mensaje a tu_dirección_email
+        $bool = mail("Icemberth.Mike@gmail.com",$titulo,$mail,$headers);
+        if($bool){
+            //echo "Mensaje enviado";
+            return json_encode(array("Status" => "true"));
+        }else{
+            //echo "Mensaje no enviado";
+            return json_encode(array("Status" => "false"));
+        }
     }
     public function enviarCotizacionEmpresa($data){
         var_dump("focus here");
