@@ -7,6 +7,7 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -55,14 +56,19 @@
         <div class="col s12 m6 l6 center-align">
             <h5 class="gray-mezza">CONTACTAR</h5>
             <p>Todos los campos son requeridos</p>
-            <input placeholder="Nombres" style="width:50%" type="text">
-            <input placeholder="Apellidos" style="width:50%" type="text">
-            <input placeholder="Empresa" style="width:50%" type="text">
-            <input placeholder="Ciudad" style="width:50%" type="text">
-            <input placeholder="E-Mail" style="width:50%" type="email">
-            <input placeholder="Teléfono" style="width:50%" type="tel">
-            <textarea placeholder="Mensaje" style="width: 52.5%; border-radius: 5px;" name="" id="" cols="30" rows="10"></textarea><br>
-            <a class="waves-effect waves-teal btn-flat change-resource-url" newResource="">ENVIAR</a>
+            <div class="col s12 m12 l12 form-contact">
+                <input name="nombre" placeholder="Nombres" style="width:50%" type="text">
+                <input name="apellidos" placeholder="Apellidos" style="width:50%" type="text">
+                <input name="empresa" placeholder="Empresa" style="width:50%" type="text">
+                <input name="ciudad" placeholder="Ciudad" style="width:50%" type="text">
+                <input name="correo" placeholder="E-Mail" style="width:50%" type="email">
+                <input name="telefono" placeholder="Teléfono" style="width:50%" type="tel">
+                <input type="hidden" name="servicio" value="Contacto">
+                <input type="hidden" name="adquirido" value="contact">
+                <textarea placeholder="Mensaje" style="width: 52.5%; border-radius: 5px;" name="mensaje" id="" cols="30" rows="10"></textarea>
+            </div>
+            <br>
+            <a class="waves-effect waves-teal btn-flat change-resource-url enviar" newResource="">ENVIAR</a>
         </div>
         <footer class="">
             <div class="col s12 m6 l3 center-align politica" style="padding: 15px; cursor:pointer;">
@@ -78,6 +84,14 @@
             </div>
         </footer>
     </div>
+    <div class="shadow-of-request">
+        <div class="container-of-request">
+            <figure>
+                <img src="img/loader.gif" alt="">
+            </figure>
+            <h5 class="mezza-color-aux">Procesando su cotización</h5>
+        </div>
+    </div>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/page.js"></script>
     <!--<script src="http://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>-->
@@ -86,6 +100,9 @@
     <script>
         $(function(){
             mezza.init();
+            $(".enviar").on("click", function(){
+                mezza.sendContact($(".form-contact"));
+            });
         });
     </script>
 </body>

@@ -17,6 +17,12 @@ mezza = {
       $(".politica").on("click",function(){
          document.location = "politica.html";
       });
+        $("body").on("click", ".close-cotizar", function(){
+            $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(".shadow-of-request").removeClass("show");
+            });
+            $(".container-of-request").animateCss("bounceOut");
+        });
     },
     switchService : function(service){
         console.log(service);
@@ -24,11 +30,24 @@ mezza = {
         $(".change-resource-name").text($(service).attr("name"));
         $(".change-resource-url").attr("href",$(service).attr("action"));
     },
-    send : function(){
-        console.log("entro");
+    send : function($from){
+        //console.log("entro");
+        $messageOk = "";
+        $messageCancel = "";
+        $messageTitle = "";
+        if($from == "" ||$from == null){//no existe mensaje, probablemente sea otro form que no sea contacto
+            $messageTitle = "cotización";
+            $messageOk = "Se ha procesado tu cotización correctamente!";
+            $messageCancel = "Ocurrió un Error al procesar tu cotización por favor intenta de nuevo en unos momentos";
+        }else{//viene del contacto
+            $messageTitle = "Petición";
+            $messageOk = "Se ha enviado correctamente tu petición, en breve nos comunicaremos contigo!";
+            $messageCancel = "Ocurrió un Error al procesar tu petición por favor intenta de nuevo en unos momentos";
+        }
         $.ajax({
             url: "mezza.php",
             method: "post",
+            dataType: "json",
             data: mezza.jsonCapture,
             beforeSend: function() {
                 console.log("antes de enviar...");
@@ -41,7 +60,7 @@ mezza = {
                     <figure>\
                         <img src="img/loader.gif" alt="">\
                     </figure>\
-                    <h5 class="mezza-color-aux">Procesando su cotización</h5>\
+                    <h5 class="mezza-color-aux">Procesando su '+$messageTitle+'</h5>\
                 ');
                 $(".shadow-of-request").addClass("show");
                 $(".container-of-request").animateCss("bounceIn");
@@ -49,45 +68,28 @@ mezza = {
             success: function(data) {
                 //cotizacion-enviada.png
                 console.log("recibido", data);
-                if(data.status == "true"){//todo salió bien
+                if(data.Status == "true"){//todo salió bien
                     $(".container-of-request").html("");
                     $(".container-of-request").append('\
                         <figure><img src="img/cotizacion-enviada.png" style="width: 100px;margin-top: 10px;"/></figure>\
-                        <p style="padding: 5px;">Se ha procesado tu cotización correctamente!</p>\
+                        <p style="padding: 5px;">'+$messageOk+'</p>\
                         <a class="waves-effect waves-teal btn-flat change-resource-url close-cotizar" style="margin-bottom: 10px;" >CERRAR</a>\
                     ');
-                    $(".close-cotizar").on("click",function(){
-                        $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                            $(".shadow-of-request").removeClass("show");
-                        });
-                        $(".container-of-request").animateCss("bounceOut");
-                    });
+
                 }else{//algo salió mal
                     $(".container-of-request").html("");
                     $(".container-of-request").append('\
-                        <p style="padding: 5px;">Ocurrió un Error al procesar tu cotización por favor intenta de nuevo en unos momentos</p>\
+                        <p style="padding: 5px;">'+$messageCancel+'</p>\
                         <a class="waves-effect waves-teal btn-flat change-resource-url close-cotizar" style="margin-bottom: 10px;" >CERRAR</a>\
                     ');
-                    $(".close-cotizar").on("click",function(){
-                        $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                            $(".shadow-of-request").removeClass("show");
-                        });
-                        $(".container-of-request").animateCss("bounceOut");
-                    });
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 $(".container-of-request").html("");
                 $(".container-of-request").append('\
-                    <p style="padding: 5px;">Ocurrió un Error al procesar tu cotización por favor intenta de nuevo en unos momentos</p>\
+                    <p style="padding: 5px;">'+$messageCancel+'</p>\
                     <a class="waves-effect waves-teal btn-flat change-resource-url close-cotizar" style="margin-bottom: 10px;" >CERRAR</a>\
                 ');
-                $(".close-cotizar").on("click",function(){
-                    $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                        $(".shadow-of-request").removeClass("show");
-                    });
-                    $(".container-of-request").animateCss("bounceOut");
-                });
             }
         });
     },
@@ -96,12 +98,9 @@ mezza = {
         var totalData = $($form).children().length;
         mezza.jsonCapture = {};//seteo el Json siempre uqe se haga una petición
         for(x = 0; x < totalData; ++x){
-            //$($form).children()[x].value;
-            //$($form).children()[x].attributes.name.value
             mezza.jsonCapture[$($form).children()[x].attributes.name.value] = $($form).children()[x].value;
         }
         console.log(mezza.jsonCapture);
-        //$(".form-people").children()[0].value
     },
     sendService : function($formPeople, $formEnterprise){
        /* $('.container-of-request').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -113,11 +112,10 @@ mezza = {
         }else{//envío el form de Empresa
            mezza.getDataFromForm($formEnterprise);
         }
-        //console.log("asdasd");
-        mezza.send();
-        /*$(".shadow-of-request").addClass("show");
-        $(".container-of-request").animateCss("bounceIn"); */
-
-        //mezza.request();
+        mezza.send("");
+    },
+    sendContact : function($formContact){
+        mezza.getDataFromForm($formContact);
+        mezza.send("Contact");
     }
 }
